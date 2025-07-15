@@ -2,12 +2,13 @@
 pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/proxy/Clones.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
  * @title TBARegistry
  * @notice ERC-6551 Registry: deploys and tracks Token-Bound Accounts
  */
-contract TBARegistry {
+contract TBARegistry is ReentrancyGuard {
     event AccountCreated(
         address indexed account,
         address indexed implementation,
@@ -33,7 +34,7 @@ contract TBARegistry {
         uint256 tokenId,
         uint256 salt,
         bytes calldata initData
-    ) external returns (address account) {
+    ) external nonReentrant returns (address account) {
         bytes32 saltHash = keccak256(
             abi.encode(chainId, tokenContract, tokenId, salt)
         );

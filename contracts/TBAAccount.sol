@@ -5,11 +5,12 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /// @title TBAAccount
 /// @notice Token-Bound Account that is controlled by the owner of a specific ERC721 token.
 ///         Supports executing arbitrary calls, holding ERC20/ERC721/ETH, and withdrawals.
-contract TBAAccount is ERC165, IERC721Receiver {
+contract TBAAccount is ERC165, IERC721Receiver, ReentrancyGuard {
     /// @notice The NFT contract address that this account is bound to.
     address public nftContract;
 
@@ -47,7 +48,7 @@ contract TBAAccount is ERC165, IERC721Receiver {
         address to,
         uint256 value,
         bytes calldata data
-    ) external onlyNFTOwner returns (bytes memory) {
+    ) external onlyNFTOwner nonReentrant returns (bytes memory) {
         (bool success, bytes memory result) = to.call{value: value}(data);
         require(success, "Call failed");
         return result;
@@ -62,7 +63,7 @@ contract TBAAccount is ERC165, IERC721Receiver {
     /// @notice Withdraws ETH from this account.
     /// @param amount The amount of ETH to withdraw.
     /// @param to The recipient address.
-    function withdrawETH(uint256 amount, address payable to) external onlyNFTOwner {
+    function withdrawETH(uint256 amount, address payable to) external onlyNFTOwner nonReentrant {
         require(address(this).balance >= amount, "Insufficient ETH");
         to.transfer(amount);
     }
@@ -71,7 +72,7 @@ contract TBAAccount is ERC165, IERC721Receiver {
     /// @param token The ERC20 token contract.
     /// @param amount The amount of tokens to withdraw.
     /// @param to The recipient address.
-    function withdrawERC20(address token, uint256 amount, address to) external onlyNFTOwner {
+    function withdrawERC20(address token, uint256 amount, address to) external onlyNFTOwner nonReentrant {
         require(IERC20(token).transfer(to, amount), "ERC20 transfer failed");
     }
 
@@ -79,7 +80,7 @@ contract TBAAccount is ERC165, IERC721Receiver {
     /// @param token The ERC721 token contract.
     /// @param _tokenId The token ID to withdraw.
     /// @param to The recipient address.
-    function withdrawERC721(address token, uint256 _tokenId, address to) external onlyNFTOwner {
+    function withdrawERC721(address token, uint256 _tokenId, address to) external onlyNFTOwner nonReentrant {
         IERC721(token).safeTransferFrom(address(this), to, _tokenId);
     }
 

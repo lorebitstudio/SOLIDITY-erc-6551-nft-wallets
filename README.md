@@ -64,11 +64,11 @@ Players can:
 
 | Contract     | Address                                                                                                                         |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| ProfileNFT   | [`0x6fb595618fC38dbf5E28719415aEC603365d70eF`](https://sepolia.basescan.org/address/0x6fb595618fC38dbf5E28719415aEC603365d70eF) |
-| SpaceShipNFT | [`0x62216aBAf04a7E4aC157b7179747Fd5988d19481`](https://sepolia.basescan.org/address/0x62216aBAf04a7E4aC157b7179747Fd5988d19481) |
-| GameToken    | [`0x9969cdcB7F904358f13A71837E37ABfed7BeD7A2`](https://sepolia.basescan.org/address/0x9969cdcB7F904358f13A71837E37ABfed7BeD7A2) |
-| TBAAccount   | [`0xe06Cd3B81f0a8233B1f072A7ab6580b058E55005`](https://sepolia.basescan.org/address/0xe06Cd3B81f0a8233B1f072A7ab6580b058E55005) |
-| TBARegistry  | [`0x5f9CD80bF3AC0Ea17e18f7a532d7FE3a8AAfEabc`](https://sepolia.basescan.org/address/0x5f9CD80bF3AC0Ea17e18f7a532d7FE3a8AAfEabc) |
+| ProfileNFT   | [`0x578b1f439cb5678f4Dd28E5dB1092b43519c13d7`](https://sepolia.basescan.org/address/0x578b1f439cb5678f4Dd28E5dB1092b43519c13d7) |
+| SpaceShipNFT | [`0xaC3E7E08345d498963021d73a1988ef193b2ab14`](https://sepolia.basescan.org/address/0xaC3E7E08345d498963021d73a1988ef193b2ab14) |
+| GameToken    | [`0x44F69196d5b89a1b5013e660EfF1c2fACe44d2DD`](https://sepolia.basescan.org/address/0x44F69196d5b89a1b5013e660EfF1c2fACe44d2DD) |
+| TBAAccount   | [`0x6f6F4103014B739cc9564FdaBCd7Edd81df392F9`](https://sepolia.basescan.org/address/0x6f6F4103014B739cc9564FdaBCd7Edd81df392F9) |
+| TBARegistry  | [`0xD1889B34CD1D11b91DFaD4C239f7487c56E361c3`](https://sepolia.basescan.org/address/0xD1889B34CD1D11b91DFaD4C239f7487c56E361c3) |
 
 ---
 
